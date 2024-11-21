@@ -1,42 +1,30 @@
 public class Cheers {
-
     public static void main(String[] args) {
-        // Vérifie si les arguments sont valides
-        if (args.length != 2) {
-            System.out.println("Usage: java Cheers <word> <repetitions>");
-            return;
-        }
+        String word = args[0].toUpperCase(); 
+        int repeats = Integer.parseInt(args[1]); 
 
-        String word = args[0].toUpperCase();
-        int repetitions;
+        String vowels = "AEFHILMNORSX";
 
-        try {
-            repetitions = Integer.parseInt(args[1]);
-            if (repetitions < 0) {
-                System.out.println("Repetitions must be non-negative.");
-                return;
-            }
-        } catch (NumberFormatException e) {
-            System.out.println("The second argument must be a valid integer.");
-            return;
-        }
-
-        // Affiche chaque lettre avec le bon article
         for (int i = 0; i < word.length(); i++) {
-            char letter = word.charAt(i);
-            if ("AEIOU".indexOf(letter) != -1) {
-                System.out.println("Give me an " + letter + ": " + letter + "!");
+            char letter = word.charAt(i); 
+
+            String article;
+            if (vowels.indexOf(letter) != -1) {
+                article = "an";
             } else {
-                System.out.println("Give me a " + letter + ": " + letter + "!");
+                article = "a";
+            }
+
+            if (article.equals("a")) {
+                System.out.println("Give me " + article + "  " + letter + ": " + letter + "!");
+            } else {
+                System.out.println("Give me " + article + " " + letter + ": " + letter + "!");
             }
         }
 
-        // Affiche le mot épelé
         System.out.println("What does that spell?");
-        System.out.println(word + "!!!");
 
-        // Répète le mot le nombre de fois demandé
-        for (int i = 0; i < repetitions; i++) {
+        for (int i = 0; i < repeats; i++) {
             System.out.println(word + "!!!");
         }
     }
