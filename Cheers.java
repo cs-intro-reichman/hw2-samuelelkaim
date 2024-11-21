@@ -1,7 +1,7 @@
 public class Cheers {
 
     public static void main(String[] args) {
-        // Vérifie si les arguments sont corrects
+        // Vérifie si les arguments sont valides
         if (args.length != 2) {
             System.out.println("Usage: java Cheers <word> <repetitions>");
             return;
@@ -21,10 +21,9 @@ public class Cheers {
             return;
         }
 
-        // Parcourt chaque lettre du mot
+        // Parcourt chaque lettre et affiche avec le bon article
         for (int i = 0; i < word.length(); i++) {
             char letter = word.charAt(i);
-
             if ("AEIOU".indexOf(letter) != -1) {
                 System.out.println("Give me an " + letter + ": " + letter + "!");
             } else {
@@ -42,5 +41,3 @@ public class Cheers {
         }
     }
 }
-
-           
