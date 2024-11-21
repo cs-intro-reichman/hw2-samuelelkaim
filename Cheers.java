@@ -1,47 +1,41 @@
-public class Cheers {
+
+            public class Cheers {
 
     public static void main(String[] args) {
-        // Vérifie si le nombre d'arguments est correct
         if (args.length != 2) {
-            System.out.println("Utilisation : Cheers <mot> <répétitions>");
+            System.out.println("Usage: Cheers <word> <repetitions>");
             return;
         }
 
-        String mot = args[0];
+        String word = args[0];
         int repetitions;
 
         try {
-            // Convertit le deuxième argument en entier
             repetitions = Integer.parseInt(args[1]);
         } catch (NumberFormatException e) {
-            System.out.println("Le deuxième argument doit être un nombre entier.");
+            System.out.println("The second argument must be an integer.");
             return;
         }
 
-        // Épelle chaque lettre du mot
-        for (int i = 0; i < mot.length(); i++) {
-            char lettre = mot.charAt(i);
+        // Process each letter of the word
+        for (int i = 0; i < word.length(); i++) {
+            char letter = word.charAt(i);
 
-            // Utilise "an" si la lettre est une voyelle, sinon "a"
-            if (isVowel(lettre)) {
-                System.out.println("Give me an " + lettre + ": " + lettre + "!");
+            // Use "an" for vowels and "a" for consonants
+            if ("AEIOUaeiou".indexOf(letter) != -1) {
+                System.out.println("Give me an " + letter + ": " + letter + "!");
             } else {
-                System.out.println("Give me a " + lettre + ": " + lettre + "!");
+                System.out.println("Give me a " + letter + ": " + letter + "!");
             }
         }
 
-        // Message après avoir épelé le mot
+        // Print the spelled word
         System.out.println("What does that spell?");
-        System.out.println(mot + "!!!");
+        System.out.println(word + "!!!");
 
-        // Répète le mot le nombre de fois demandé
+        // Repeat the word the given number of times
         for (int i = 0; i < repetitions; i++) {
-            System.out.println(mot + "!!!");
+            System.out.println(word + "!!!");
         }
-    }
-
-    // Méthode pour vérifier si une lettre est une voyelle
-    private static boolean isVowel(char lettre) {
-        return "AEIOUaeiou".indexOf(lettre) != -1;
     }
 }
