@@ -7,7 +7,7 @@ public class Cheers {
             return;
         }
 
-        String word = args[0].toUpperCase(); // Convertit le mot en majuscules
+        String word = args[0].toUpperCase();
         int repetitions;
 
         try {
@@ -21,7 +21,7 @@ public class Cheers {
             return;
         }
 
-        // Parcourt chaque lettre et affiche avec le bon article
+        // Affiche chaque lettre avec le bon article
         for (int i = 0; i < word.length(); i++) {
             char letter = word.charAt(i);
             if ("AEIOU".indexOf(letter) != -1) {
