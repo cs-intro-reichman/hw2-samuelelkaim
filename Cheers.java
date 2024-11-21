@@ -21,7 +21,9 @@ public class Cheers {
         // Épelle chaque lettre du mot
         for (int i = 0; i < mot.length(); i++) {
             char lettre = mot.charAt(i);
-            if ("AEIOUYaeiouy".indexOf(lettre) != -1) {
+
+            // Utilise "an" si la lettre est une voyelle, sinon "a"
+            if (isVowel(lettre)) {
                 System.out.println("Give me an " + lettre + ": " + lettre + "!");
             } else {
                 System.out.println("Give me a " + lettre + ": " + lettre + "!");
@@ -36,5 +38,10 @@ public class Cheers {
         for (int i = 0; i < repetitions; i++) {
             System.out.println(mot + "!!!");
         }
+    }
+
+    // Méthode pour vérifier si une lettre est une voyelle
+    private static boolean isVowel(char lettre) {
+        return "AEIOUaeiou".indexOf(lettre) != -1;
     }
 }
