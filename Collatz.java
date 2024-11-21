@@ -1,56 +1,46 @@
-public class Collatz {
+public class Cheers {
 
     public static void main(String[] args) {
+        // Vérifie si les arguments sont valides
         if (args.length != 2) {
-            System.out.println("Usage: java Collatz <N> <mode>");
-            System.out.println("<N>: Positive integer.");
-            System.out.println("<mode>: 'v' for verbose, any other value for silent.");
+            System.out.println("Usage: java Cheers <word> <repetitions>");
             return;
         }
 
-        int N;
+        String word = args[0].toUpperCase(); // Convertit le mot en majuscules
+        int repetitions;
+
         try {
-            N = Integer.parseInt(args[0]);
-            if (N <= 0) {
-                System.out.println("<N> must be a positive integer.");
+            repetitions = Integer.parseInt(args[1]);
+            if (repetitions < 0) {
+                System.out.println("Repetitions must be non-negative.");
                 return;
             }
         } catch (NumberFormatException e) {
-            System.out.println("<N> must be a valid integer.");
+            System.out.println("The second argument must be a valid integer.");
             return;
         }
 
-        String mode = args[1];
-        boolean verbose = mode.equalsIgnoreCase("v");
-
-        for (int seed = 1; seed <= N; seed++) {
-            int current = seed;
-            int steps = 0;
-
-            if (verbose) {
-                System.out.print(seed + " ");
-            }
-
-            // Toujours afficher la séquence complète pour 1
-            while (current != 1 || steps == 0) {
-                if (current % 2 == 0) {
-                    current /= 2;
-                } else {
-                    current = current * 3 + 1;
-                }
-                steps++;
-                if (verbose && (current != 1 || steps == 0)) {
-                    System.out.print(current + " ");
-                }
-            }
-
-            if (verbose) {
-                System.out.println("(" + steps + ")");
+        // Parcourt chaque lettre et affiche le bon article
+        for (int i = 0; i < word.length(); i++) {
+            char letter = word.charAt(i);
+            if ("AEIOU".indexOf(letter) != -1) {
+                System.out.println("Give me an " + letter + ": " + letter + "!");
+            } else {
+                System.out.println("Give me a " + letter + ": " + letter + "!");
             }
         }
 
-        System.out.println("Every one of the first " + N + " hailstone sequences reached 1.");
+        // Affiche le mot épelé
+        System.out.println("What does that spell?");
+        System.out.println(word + "!!!");
+
+        // Répète le mot le nombre de fois demandé
+        for (int i = 0; i < repetitions; i++) {
+            System.out.println(word + "!!!");
+        }
     }
 }
 
-          
+
+         
