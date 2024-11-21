@@ -31,14 +31,15 @@ public class Collatz {
                 System.out.print(seed + " ");
             }
 
-            while (current != 1) {
+            // Toujours afficher la séquence complète pour 1
+            while (current != 1 || steps == 0) {
                 if (current % 2 == 0) {
                     current /= 2;
                 } else {
                     current = current * 3 + 1;
                 }
                 steps++;
-                if (verbose) {
+                if (verbose && (current != 1 || steps == 0)) {
                     System.out.print(current + " ");
                 }
             }
@@ -52,3 +53,4 @@ public class Collatz {
     }
 }
 
+          
