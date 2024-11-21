@@ -12,18 +12,40 @@ public class Cheers {
 
         try {
             repetitions = Integer.parseInt(args[1]);
+            if (repetitions < 0) {
+                System.out.println("Le nombre de répétitions doit être un entier positif.");
+                return;
+            }
         } catch (NumberFormatException e) {
-            System.out.println("The second argument must be an integer.");
+            System.out.println("Le deuxième argument doit être un entier valide.");
             return;
         }
 
-        // Parcourt chaque lettre du mot
+        // Affiche chaque lettre avec l'article approprié
         for (int i = 0; i < word.length(); i++) {
             char letter = word.charAt(i);
 
-            // Utilise "an" pour les voyelles, sinon "a"
             if (isVowel(letter)) {
-                System.out.println("Give me an " + letter +
+                System.out.println("Give me an " + letter + ": " + letter + "!");
+            } else {
+                System.out.println("Give me a " + letter + ": " + letter + "!");
+            }
+        }
 
-       
+        // Affiche le mot épelé
+        System.out.println("What does that spell?");
+        System.out.println(word + "!!!");
+
+        // Répète le mot le nombre de fois demandé
+        for (int i = 0; i < repetitions; i++) {
+            System.out.println(word + "!!!");
+        }
+    }
+
+    // Méthode pour vérifier si une lettre est une voyelle
+    private static boolean isVowel(char letter) {
+        return "AEIOU".indexOf(letter) != -1;
+    }
+}
+
 
