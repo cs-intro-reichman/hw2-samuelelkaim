@@ -1,25 +1,26 @@
 public class Cheers {
+
     public static void main(String[] args) {
-        String word = args[0];
-        int counter = Integer.parseInt(args[1]);
-        String vowels = "AEFHILMNORSX";
-
-        for (int i = 0; i < word.length(); i++) {
-            char letter = word.charAt(i);
-            if (letter >= 'a' && letter <= 'z') {
-                letter = (char) (letter - 'a' + 'A');
-            }
-
-            if (vowels.indexOf(letter) != -1) {
-                System.out.println("Give me an " + letter + ": " + letter + "!");
-            } else {
-                System.out.println("Give me a " + letter + ": " + letter + "!");
-            }
+        // Vérifie si le nombre d'arguments est correct
+        if (args.length != 2) {
+            System.out.println("Utilisation : Cheers <mot> <répétitions>");
+            return;
         }
 
-        System.out.println("What does that spell?");
-        for (int i = 0; i < counter; i++) {
-            System.out.println(word.toUpperCase() + "!!!");
-        }
-    }
+        String mot = args[0];
+        int repetitions;
+
+        try {
+            // Convertit le deuxième argument en entier
+            repetitions = Integer.parseInt(args[1]);
+        } catch (NumberFormatException e) {
+            System.out.println("Le deuxième argument doit être un nombre entier.");
+            return;
+        }
+
+        // Boucle pour afficher le mot avec un point d'exclamation
+        for (int i = 0; i < repetitions; i++) {
+            System.out.println(mot + "!");
+        }
+    }
 }
