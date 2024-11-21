@@ -31,7 +31,7 @@ public class Collatz {
                 System.out.print(seed + " ");
             }
 
-            // Inclut toujours au moins une itération complète
+            // Effectue les calculs pour la suite de Collatz
             while (current != 1 || steps == 0) {
                 if (current % 2 == 0) {
                     current /= 2;
@@ -52,3 +52,4 @@ public class Collatz {
         System.out.println("Every one of the first " + N + " hailstone sequences reached 1.");
     }
 }
+
