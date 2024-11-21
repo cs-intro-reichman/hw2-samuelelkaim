@@ -1,7 +1,7 @@
 public class TestRandom {
 
     public static void main(String[] args) {
-        // Vérifie que l'utilisateur fournit le bon nombre d'arguments
+        // Vérifie si un argument est fourni
         if (args.length != 1) {
             System.out.println("Usage: java TestRandom <N>");
             System.out.println("<N>: Un entier positif représentant le nombre de valeurs aléatoires à générer.");
@@ -10,7 +10,7 @@ public class TestRandom {
 
         int N;
         try {
-            N = Integer.parseInt(args[0]); // Convertit l'entrée en entier
+            N = Integer.parseInt(args[0]);
             if (N <= 0) {
                 System.out.println("Erreur: <N> doit être un entier positif.");
                 return;
@@ -25,7 +25,7 @@ public class TestRandom {
 
         // Génère et classe les nombres aléatoires
         for (int i = 0; i < N; i++) {
-            double randomValue = Math.random(); // Génère un nombre entre 0.0 (inclus) et 1.0 (exclu)
+            double randomValue = Math.random();
             if (randomValue > 0.5) {
                 countAboveHalf++;
             } else {
@@ -42,7 +42,9 @@ public class TestRandom {
             System.out.println("Ratio: Undefined (no numbers ≤ 0.5)");
         } else {
             double ratio = (double) countAboveHalf / countBelowOrEqualHalf;
-            System.out.printf("Ratio: %.6f%n", ratio); // Affiche avec 6 décimales
+            System.out.printf("Ratio: %.6f%n", ratio);
         }
     }
 }
+
+         
