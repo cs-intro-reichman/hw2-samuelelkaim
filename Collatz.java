@@ -1,35 +1,42 @@
 public class Collatz {
     public static void main(String[] args) {
-        int N = Integer.parseInt(args[0]);
+        int maxSeed = Integer.parseInt(args[0]);
         String mode = args[1];
-        boolean verbose = mode.equals("v");
 
-        for (int seed = 1; seed <= N; seed++) {
-            int current = seed;
+        for (int seed = 1; seed <= maxSeed; seed++) {
+            int n = seed;
             int steps = 0;
 
-            if (verbose) {
-                System.out.print(seed + " ");
+            if (mode.equals("v")) {
+                System.out.print(n);
             }
 
-            while (current != 1) {
-                if (current % 2 == 0) {
-                    current /= 2;
-                } else {
-                    current = current * 3 + 1;
+            if (n == 1) {
+                steps = 4;
+                if (mode.equals("v")) {
+                    System.out.print(" 4 2 1");
+                }
+            } else {
+                while (n != 1) {
+                    if (n % 2 == 0) {
+                        n = n / 2;
+                    } else {
+                        n = 3 * n + 1;
+                    }
+                    steps++;
+                    if (mode.equals("v")) {
+                        System.out.print(" " + n);
+                    }
                 }
                 steps++;
-                if (verbose) {
-                    System.out.print(current + " ");
-                }
             }
 
-            if (verbose) {
-                System.out.println("(" + steps + ")");
+            if (mode.equals("v")) {
+                System.out.println(" (" + steps + ")");
             }
         }
 
-        System.out.println("Every one of the first " + N + " hailstone sequences reached 1.");
+        System.out.println("Every one of the first " + maxSeed + " hailstone sequences reached 1.");
     }
 }
 
